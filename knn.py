@@ -1,9 +1,7 @@
 import numpy as np
 import pandas as pd
 
-# ======================
-# K-NEAREST NEIGHBORS
-# ======================
+
 class KNearestNeighborsScratch:
     def __init__(self, k=3):
         self.k = k
@@ -24,10 +22,6 @@ class KNearestNeighborsScratch:
         values, counts = np.unique(k_nearest_labels, return_counts=True)
         return values[np.argmax(counts)]
 
-
-# ======================
-# EXAMPLE: Simple KNN Classification
-# ======================
 data = pd.DataFrame({
     'x1': [1, 2, 3, 6, 7, 8],
     'x2': [1, 1, 2, 6, 7, 8],
@@ -37,11 +31,10 @@ data = pd.DataFrame({
 X = data[['x1', 'x2']]
 y = data['label']
 
-# Initialize and train model
+
 knn = KNearestNeighborsScratch(k=3)
 knn.fit(X, y)
 
-# Predict for new samples
 new_samples = pd.DataFrame({
     'x1': [4, 5, 7],
     'x2': [3, 4, 8]
@@ -49,3 +42,4 @@ new_samples = pd.DataFrame({
 
 predictions = knn.predict(new_samples)
 print("KNN Predictions for new samples:", predictions)
+
